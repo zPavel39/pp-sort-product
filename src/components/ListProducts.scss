@@ -1,0 +1,22 @@
+.listProduct {
+    &__list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-left: 20px;
+        margin-bottom: 50px;
+
+        &_str {
+            display: flex;
+        }
+    }
+
+    &__item {
+        display: flex;
+        width: 100%;
+        gap: 45px;
+    }
+
+
+
+}

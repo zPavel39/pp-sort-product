@@ -1,0 +1,32 @@
+.mainPage {
+    &__title {
+        font-size: 25px;
+        padding: 20px 0px 0px 20px;
+        margin-bottom: 25px;
+    }
+
+    &__actionList {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-left: 20px;
+        margin-bottom: 10px;
+
+        &_btn {
+            font-style: 15px;
+            font-weight: bold;
+            cursor: pointer;
+
+            &:hover {
+                color: green;
+            }
+        }
+
+        &_btnActive {
+            font-style: 15px;
+            font-weight: bold;
+            color: red;
+        }
+    }
+
+}
