@@ -6,7 +6,8 @@ import './MainPage.scss'
 
 const MainPage = () => {
     const [list, setList] = useState([])
-    const [activeSort, setActiveSort] = useState({ name: 'noSort', check: false })
+    const [activeSort, setActiveSort] = useState(false)
+    const [sortList, setSortList] = useState([])
 
     const columns = {
         name: 'Название',
@@ -21,40 +22,48 @@ const MainPage = () => {
         setList(getAllList())
     }, [])
 
+    useEffect(() => {
+        setSortList([...list])
+    }, [list])
 
     const callback = {
-        sortListNumberOfDeliveries: (name) => {
-            callback.clickSort(name)
-            const columnArr = columns
-            const keyColumn = activeSort.name
-            if (activeSort.name === 'noSort') {
-                return list
-            }
-            if (columnArr[keyColumn] === "Точка") {
-                return setList.sort((a, b) => {
-                    return a[keyColumn].toLowerCase().localeCompare(b[keyColumn].toLowerCase())
+        sortListNumberOfDeliveries: () => {
+            setActiveSort(!activeSort)
+            if (sortList.length > 1 && activeSort === true) {
+                setActiveSort(!activeSort)
+                let sortAllList = sortList.sort((a, b) => {
+                    let A = Number(a.amountOfDeliveries)
+                    let B = Number(b.amountOfDeliveries)
+                    if (A >= B) {
+                        return 1
+                    }
+                    if (A < B) {
+                        return -1
+                    }
+                    return 0;
                 })
+                setSortList([...sortAllList])
             }
-            if (columnArr[keyColumn] === "Сумма поставок") {
-                return setList.sort((a, b) => {
-                    return a[keyColumn].toLowerCase().localeCompare(b[keyColumn].toLowerCase())
+            if (sortList.length > 1 && activeSort === false) {
+                setActiveSort(!activeSort)
+                let sortAllList = sortList.sort((a, b) => {
+                    let A = Number(a.amountOfDeliveries)
+                    let B = Number(b.amountOfDeliveries)
+                    if (A <= B) {
+                        return 1
+                    }
+                    if (A > B) {
+                        return -1
+                    }
+                    return 0;
                 })
+                setSortList([...sortAllList])
             }
-            if (columnArr[keyColumn] === "Сумма поставок") {
-                return setList.sort((a, b) => {
-                    return a[keyColumn] - b[keyColumn]
-                })
+            else {
+                setSortList([...sortList])
             }
-            if (columnArr[keyColumn] === "Кол-во поставок") {
-                return setList.sort((a, b) => {
-                    return a[keyColumn] - b[keyColumn]
-                })
-            }
-            return list
-        },
-        clickSort: (name) => {
-            setActiveSort({ name: name, checkout: !false })
-        },
+            
+        }
     }
     return (
         <div className='mainPage'>
@@ -65,11 +74,11 @@ const MainPage = () => {
                 <li className='mainPage__actionList_btn'>{columns.phoneNumber}</li>
                 <li className='mainPage__actionList_btn'>{columns.address}</li>
                 <li className='mainPage__actionList_btn'>{columns.comment}</li>
-                <li className='mainPage__actionList_btn' onClick={callback.sortListNumberOfDeliveries}>{columns.numberOfDeliveries}</li>
-                <li className='mainPage__actionList_btn'>{columns.amountOfDeliveries}</li>
+                <li className='mainPage__actionList_btn' >{columns.numberOfDeliveries}</li>
+                <li className='mainPage__actionList_btn' onClick={() => callback.sortListNumberOfDeliveries()}>{columns.amountOfDeliveries}</li>
                 <li className='mainPage__actionList_btn'>{columns.namePos}</li>
             </ul>
-            <ListProducts list={list} />
+            <ListProducts list={sortList} />
         </div>
     )
 }
