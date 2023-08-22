@@ -9,11 +9,11 @@ const ListProducts = ({ ...props }) => {
                         return (
                             <li className='listProduct__list_str' key={i.id}>
                                 <ul className='listProduct__item'>
-                                    <li>{key + 1}</li>
+                                    {/* <li>{key + 1}</li>
                                     <li>{i.name}</li>
                                     <li>{i.phoneNumber}</li>
                                     <li>{i.address}</li>
-                                    <li>{i.comment}</li>
+                                    <li>{i.comment}</li> */}
                                     <li>{i.numberOfDeliveries}</li>
                                     <li>{i.amountOfDeliveries}</li>
                                     <li>{i.namePos}</li>

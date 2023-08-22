@@ -27,6 +27,20 @@
             font-weight: bold;
             color: red;
         }
+
+        &_imgTop {
+            width: 20px;
+            background-color: white;
+            margin-left: 10px;
+        }
+
+        &_imgBottom {
+            width: 20px;
+            background-color: white;
+            margin-left: 10px;
+            transform: rotate(180deg);
+
+        }
     }
 
 }
