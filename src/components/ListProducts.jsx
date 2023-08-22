@@ -14,9 +14,9 @@ const ListProducts = ({ ...props }) => {
                                     <li>{i.phoneNumber}</li>
                                     <li>{i.address}</li>
                                     <li>{i.comment}</li> */}
-                                    <li>{i.numberOfDeliveries}</li>
-                                    <li>{i.amountOfDeliveries}</li>
-                                    <li>{i.namePos}</li>
+                                    {/* <li>{i.name}</li> */}
+                                    <li>{i.restaurant}</li>
+                                    {/* <li>{i.legalEntity}</li> */}
                                 </ul>
                             </li>
                         )
