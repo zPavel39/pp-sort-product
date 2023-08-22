@@ -103,7 +103,7 @@ const MainPage = () => {
             if (sortList.length > 1 && activeSort.check === true) {
                 setActiveSort({ name: name, check: false })
                 let sortAllList = sortList.sort((a, b) => {
-                    let nameA = a.namePos.toLowerCase(), nameB = b.namePos.toLowerCase()
+                    let nameA = a.namePos.toLowerCase().trim(), nameB = b.namePos.toLowerCase().trim()
                     if (nameA < nameB)
                         return -1
                     if (nameA > nameB)
@@ -115,7 +115,7 @@ const MainPage = () => {
             if (sortList.length > 1 && activeSort.check === false) {
                 setActiveSort({ name: name, check: true })
                 let sortAllList = sortList.sort((a, b) => {
-                    let nameA = a.namePos.toLowerCase(), nameB = b.namePos.toLowerCase()
+                    let nameA = a.namePos.toLowerCase().trim(), nameB = b.namePos.toLowerCase().trim()
                     if (nameA > nameB)
                         return -1
                     if (nameA < nameB)
